@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Reset Password</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <style>
+    .center {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .navbar-custom {
+      background-color: red;
+      color: white;
+      font-family: cursive;
+    }
+    a{
+        color: white;
+    }
+    .navbar-toggler-icon {
+  color: white;
+    }
+label {
+  font-family: cursive;
+}
+.container {
+  position: relative;
+  width: 100%;
+}
+.my-form {
+  position: absolute;
+  top: 38%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+.my-form1 {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+  h3,h1 {
+        color: red;
+        font-family: cursive;
+        text-align: center;
+        margin-top: 5px;
+      }
+
+  </style>
+</head>
+<body>
+    <!--Navbar code-->
+    <nav class="navbar navbar-expand-md navbar-custom navbar-dark bg-red">
+        <a class="navbar-brand">Blood Bank</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="./home" style="color:white">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./user" style="color:white">Donor</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+<h1>Forget Password</h1>
+    <h3>{{h3Text}}</h3>
+    <form class="my-form" action="reset" method="post">
+      <label for="ID">Unique ID:</label>
+      <input type="text" class="form-control" id="uniqueid" name="uniqueid" placeholder="Enter Your ID"required>
+      <br>
+      <center><button type="submit" class="btn btn-primary" style="background-color: red;">Submit</button></center>
+    </form>
+    <form class="my-form1" action="verify" method="post">
+      <label for="verification">Verification Code:</label>
+      <input type="text" class="form-control" id="otp" name="otp" placeholder="Enter the OTP" required>
+      <br>
+      <center><button type="submit" class="btn btn-primary" style="background-color: red;">Verify</button></center>
+    </form>
+
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

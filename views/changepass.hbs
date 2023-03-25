@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Reset Password</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <style>
+    .navbar-custom {
+    background-color: red;
+    color: white;
+    font-family: cursive;
+    }
+    a{
+    color: white;
+    }
+    .navbar-toggler-icon {
+    color: white;
+    }
+    label {
+    font-family: cursive;
+    }
+    .my-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    }
+    .my-form {
+    position: absolute;
+    top: 38%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    }
+    label {
+    font-family: cursive;
+    }
+    h3 {
+        color: red;
+        font-family: cursive;
+        text-align: center;
+        margin-top: 5px;
+      }
+
+  </style>
+</head>
+<body>
+    <!--Navbar code-->
+    <nav class="navbar navbar-expand-md navbar-custom navbar-dark bg-red">
+        <a class="navbar-brand">Blood Bank</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="./home" style="color:white">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./user" style="color:white">Donor</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    <h3>{{h3Text}}</h3>
+    <form class="my-form" action="updatepass" method="post">
+      <label for="Newpass">New Password:</label>
+      <input type="password" class="form-control" id="new_pass" name="new_pass" placeholder="Enter New Password" required>
+      <br>
+      <label for="Confirmpass">Confirm Password:</label>
+      <input type="password" class="form-control" id="c_pass" name="c_pass" placeholder="Confirm Password" required>
+      <br>
+      <center><button type="submit" class="btn btn-primary" style="background-color: red;">Submit</button></center>
+    </form>
+
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

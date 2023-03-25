@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Donor Dashboard</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <style>
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.navbar-custom {
+    background-color: red;
+    color: white;
+    font-family: cursive;
+}
+a{
+    color: white;
+}
+.navbar-toggler-icon {
+color: white;
+}
+h4,p,h1{
+  color: red;
+  font-family: cursive;
+  text-align: center;
+  margin-top: 5px;
+}
+input[type="text"] {
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 300px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: red;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+.left-section {
+    float: left;
+    width: 45%;
+    margin: 20px;
+    height: 200px;
+}
+.right-section {
+    float: right;
+    width: 45%;
+    margin: 20px;
+    height: 200px;
+}
+input[type="date"] {
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        font-size: 16px;
+        color: #555;
+      }
+.card {
+  border: 1px solid black;
+  padding: 10px;
+  margin: 10px;
+  width: 300px;
+  display: inline-block;
+}
+    table {
+      border-collapse: collapse;
+      margin: 20px;
+    }
+    th, td {
+      padding: 10px;
+      color:red;
+    }
+  </style>
+</head>
+<body>
+    <!--Navbar code-->
+    <nav class="navbar navbar-expand-md navbar-custom navbar-dark bg-red">
+        <a class="navbar-brand">Blood Bank</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="donor_logout" style="color:white">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+    <!--location-->
+    <div style="text-align: center; margin: 20px;">
+     <form action="donor_req" method="post">   
+        <input type="text" placeholder="Enter location" id="location" name="location" style="margin-right: 10px;">
+        <input type="date" id="date" name="date">
+        <button type="submit" style="background-color: red; color: white; display: inline-block; vertical-align: middle;">Request</button>
+    </form>
+    </div>
+
+    <!--Section code-->
+     
+    <div class="left-section">
+      <h4>Request Status</h4>
+    {{#each donor}}
+      <div class="card">
+        <p>Name:{{this.name}}</p>
+        <p>Age: {{this.age}}</p>
+        <p>Blood Group: {{this.bloodGroup}}</p>
+        <p>Location: {{this.location}}</p>
+        <p>Date: {{this.date}}</p>
+         <p>Status: {{this.status}}</p>
+      </div>
+    {{/each}}
+    </div>
+    <div class="right-section">
+      <h4>History</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Blood Group</th>
+            <th>Location</th>
+            <th>Date</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each result}}
+          <tr>
+            <td>{{this.Name}}</td>
+            <td>{{this.Age}}</td>
+            <td>{{this.blood_group}}</td>
+            <td>{{this.location}}</td>
+            <td>{{this.date}}</td>
+            <td>{{this.status}}</td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+ <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <style>
+    .center {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .navbar-custom {
+      background-color: red;
+      color: white;
+      font-family: cursive;
+    }
+    a{
+        color: white;
+    }
+    .navbar-toggler-icon {
+  color: white;
+    }
+    label {
+  font-family: cursive;
+}
+.container {
+  position: relative;
+  width: 100%;
+}
+
+.my-form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+h3,h1,h2 {
+  color: red;
+  font-family: cursive;
+  text-align: center;
+  margin-top: 5px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 20px;
+}
+
+.left-section {
+  background-color: white;
+  padding: 20px;
+  overflow-y: auto;
+  overflow-x: auto;
+}
+
+.right-section {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 20px;
+  background-color: white;
+}
+
+.right-section-1, .right-section-2 {
+  padding: 20px;
+}
+input[type="text"] {
+  width: 200px;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  margin-right: 10px;
+}
+
+button {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: red;
+  color: white;
+  cursor: pointer;
+}
+.card {
+  border: 1px solid black;
+  padding: 10px;
+  margin: 10px;
+  width: 300px;
+  display: inline-block;
+}
+table {
+  border-collapse: collapse;
+  margin: 20px;
+}
+th, td {
+  padding: 10px;
+  color:red;
+}
+
+  </style>
+</head>
+<body>
+    <!--Navbar code-->
+    <nav class="navbar navbar-expand-md navbar-custom navbar-dark bg-red">
+        <a class="navbar-brand">Blood Bank</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="admin_logout" style="color:white">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+    <!--Section Code-->
+<div class="grid-container">
+  <div class="left-section">
+    <h2>Donor data</h2>  
+          <table>
+        <thead>
+          <tr>
+            <th>User ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Blood Group</th>
+            <th>Location</th>
+            <th>Date</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each result}}
+          <tr>
+            <td>{{this.user_id}}</td>
+            <td>{{this.Name}}</td>
+            <td>{{this.Age}}</td>
+            <td>{{this.blood_group}}</td>
+            <td>{{this.location}}</td>
+            <td>{{this.date}}</td>
+            <td>{{this.status}}</td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+  </div>
+  <div class="right-section">
+    <div class="right-section-1">
+      <h2>Donor Request</h2>
+      {{#each result}}
+       {{#if (eq this.status "Pending")}}
+        <div class="card">
+            <p>User ID:{{this.user_id}}</p>
+            <p>Name: {{this.Name}}</p>
+            <p>Age: {{this.Age}}</p>
+            <p>Blood Group: {{this.blood_group}}</p>
+            <p>Location: {{this.location}}</p>
+            <p>Date: {{this.date}}</p>
+            <form method="post" action="/update_status">
+              <input type="hidden" name="userID" id="userID" value={{this.user_id}}>
+              <input type="hidden" name="date" id="date" value={{this.date}}>
+              <input type="hidden" name="mail" id="mail" value={{this.email}}>
+              <center><button type="submit" class="btn btn-primary" style="background-color: red;">Accept</button></center>
+            </form>
+        </div>
+        {{/if}}
+      {{/each}}
+  </div>
+</div>
+
+
+
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
